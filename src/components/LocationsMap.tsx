@@ -59,10 +59,20 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
 
   useEffect(() => {
     const map = L.map(containerRef.current!, { scrollWheelZoom: false, zoomControl: true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    // Free, keyless tiles. If CARTO is blocked (ad blockers, networks), swap to OpenStreetMap's own tiles.
+    const carto = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       maxZoom: 19,
     }).addTo(map);
+    let tileErrors = 0;
+    carto.on('tileerror', () => {
+      if (++tileErrors !== 3) return;
+      map.removeLayer(carto);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+    });
     mapRef.current = map;
     return () => {
       map.remove();

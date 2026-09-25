@@ -37,7 +37,7 @@ export const BrandsPage: React.FC<BrandsPageProps> = ({ onOpenBrand, onViewLocat
               whileHover={{ y: -8, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.4, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
+              className="group rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between"
               onClick={() => onOpenBrand(brand.id)}
             >
               <BrandVisualArt brandId={brand.id} className="h-full min-h-[380px]" />
