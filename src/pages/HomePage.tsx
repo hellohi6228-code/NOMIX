@@ -20,42 +20,42 @@ interface CarouselSlide {
 
 const HERO_SLIDES: CarouselSlide[] = [
   {
-    image: '/assets/food/restaurant_vibe.jpg',
+    image: 'assets/food/restaurant_vibe.jpg',
     brand: 'Umiya',
     brandId: 'umiya',
     subtitle: 'Sushi · Seafood · Robata Grill',
     tag: '20+ Locations'
   },
   {
-    image: '/assets/food/seafood_boil.jpg',
+    image: 'assets/food/seafood_boil.jpg',
     brand: 'Surfing Crab',
     brandId: 'surfing-crab',
     subtitle: 'Southern Cajun Seafood Boil',
     tag: '10 Locations'
   },
   {
-    image: '/assets/food/hibachi_flame.jpg',
+    image: 'assets/food/hibachi_flame.jpg',
     brand: 'Hibachi Grill & Supreme Buffet',
     brandId: 'hibachi-buffet',
     subtitle: 'Asian Supreme Buffet & Teppanyaki',
     tag: '7 Locations'
   },
   {
-    image: '/assets/food/matcha_drink.jpg',
+    image: 'assets/food/matcha_drink.jpg',
     brand: 'Matcha Zen',
     brandId: 'matcha-zen',
     subtitle: 'Organic Matcha & Artisanal Gelato',
     tag: 'Houston Oct 2026'
   },
   {
-    image: '/assets/food/chilin_ramen.jpg',
+    image: 'assets/food/chilin_ramen.jpg',
     brand: 'Chilin',
     brandId: 'chilin',
     subtitle: 'Hand-Pulled Ramen & Izakaya',
     tag: 'Houston Oct 2026'
   },
   {
-    image: '/assets/food/tropical_drink.jpg',
+    image: 'assets/food/tropical_drink.jpg',
     brand: 'Viva Refresh',
     brandId: 'viva-refresh',
     subtitle: 'Real Fruit Coolers & Craft Teas',

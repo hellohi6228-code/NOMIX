@@ -35,7 +35,7 @@ export const CareersPage: React.FC = () => {
           </motion.div>
 
           <div className="lg:col-span-6 h-64 sm:h-80 rounded-3xl overflow-hidden shadow-lg relative">
-            <img src="/assets/food/restaurant_vibe.jpg" alt="Restaurant team dining room" className="w-full h-full object-cover" />
+            <img src="assets/food/restaurant_vibe.jpg" alt="Restaurant team dining room" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6 text-white">
               <span className="font-serif italic text-lg text-amber-200">The Daily Family Meal before every shift</span>
             </div>

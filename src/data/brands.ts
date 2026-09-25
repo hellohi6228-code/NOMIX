@@ -9,13 +9,13 @@ export const BRANDS: BrandData[] = [
     locationCount: '20+ Locations',
     states: ['Texas', 'Nevada', 'New Jersey', 'New York', 'Florida', 'Tennessee', 'Virginia'],
     status: 'Open Nationwide',
-    image: '/assets/food/umiya_sushi.jpg',
+    image: 'assets/food/umiya_sushi.jpg',
     foodImages: [
-      '/assets/food/umiya_sushi.jpg',
-      '/assets/food/umiya_wagyu.jpg',
-      '/assets/food/umiya_platter.webp',
-      '/assets/food/umiya_sashimi.webp',
-      '/assets/food/umiya_rolls.webp'
+      'assets/food/umiya_sushi.jpg',
+      'assets/food/umiya_wagyu.jpg',
+      'assets/food/umiya_platter.webp',
+      'assets/food/umiya_sashimi.webp',
+      'assets/food/umiya_rolls.webp'
     ],
     highlights: [
       'Daily sliced sashimi',
@@ -34,12 +34,12 @@ export const BRANDS: BrandData[] = [
     locationCount: '10 Locations',
     states: ['Texas', 'California', 'Delaware'],
     status: 'Open',
-    image: '/assets/food/surfing_dish_boil.jpg',
+    image: 'assets/food/surfing_dish_boil.jpg',
     foodImages: [
-      '/assets/food/surfing_dish_boil.jpg',
-      '/assets/food/surfing_dish_combo.jpg',
-      '/assets/food/surfing_dish_crablegs.jpg',
-      '/assets/food/crawfish_crab.jpg'
+      'assets/food/surfing_dish_boil.jpg',
+      'assets/food/surfing_dish_combo.jpg',
+      'assets/food/surfing_dish_crablegs.jpg',
+      'assets/food/crawfish_crab.jpg'
     ],
     highlights: [
       'Fresh crab clusters',
@@ -58,11 +58,11 @@ export const BRANDS: BrandData[] = [
     locationCount: '7 Locations',
     states: ['Texas', 'Connecticut', 'New Jersey', 'New York'],
     status: 'Open',
-    image: '/assets/food/hibachi_flame.jpg',
+    image: 'assets/food/hibachi_flame.jpg',
     foodImages: [
-      '/assets/food/hibachi_flame.jpg',
-      '/assets/food/dim_sum.jpg',
-      '/assets/food/asian_noodles.jpg'
+      'assets/food/hibachi_flame.jpg',
+      'assets/food/dim_sum.jpg',
+      'assets/food/asian_noodles.jpg'
     ],
     highlights: [
       'Live flat top grill',
@@ -81,10 +81,10 @@ export const BRANDS: BrandData[] = [
     locationCount: 'Houston Oct 2026',
     states: ['Texas'],
     status: 'Opening Soon',
-    image: '/assets/food/matcha_drink.jpg',
+    image: 'assets/food/matcha_drink.jpg',
     foodImages: [
-      '/assets/food/matcha_drink.jpg',
-      '/assets/food/matcha_gelato.jpg'
+      'assets/food/matcha_drink.jpg',
+      'assets/food/matcha_gelato.jpg'
     ],
     highlights: [
       'Pure ceremonial grade',
@@ -103,11 +103,11 @@ export const BRANDS: BrandData[] = [
     locationCount: 'Houston Oct 2026',
     states: ['Texas'],
     status: 'Opening Soon',
-    image: '/assets/food/chilin_ramen.jpg',
+    image: 'assets/food/chilin_ramen.jpg',
     foodImages: [
-      '/assets/food/chilin_ramen.jpg',
-      '/assets/food/dim_sum.jpg',
-      '/assets/food/asian_noodles.jpg'
+      'assets/food/chilin_ramen.jpg',
+      'assets/food/dim_sum.jpg',
+      'assets/food/asian_noodles.jpg'
     ],
     highlights: [
       'Sixteen hour broth',
@@ -126,9 +126,9 @@ export const BRANDS: BrandData[] = [
     locationCount: 'Houston Flagship',
     states: ['Texas'],
     status: 'Open',
-    image: '/assets/food/tropical_drink.jpg',
+    image: 'assets/food/tropical_drink.jpg',
     foodImages: [
-      '/assets/food/tropical_drink.jpg'
+      'assets/food/tropical_drink.jpg'
     ],
     highlights: [
       'Ripe fruit purees',

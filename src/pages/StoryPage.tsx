@@ -41,7 +41,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
             className="rounded-3xl overflow-hidden shadow-md h-80 relative group"
           >
             <img
-              src="/assets/food/hibachi_flame.jpg"
+              src="assets/food/hibachi_flame.jpg"
               alt="Hibachi fire"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -60,7 +60,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
             className="rounded-3xl overflow-hidden shadow-md h-80 relative group"
           >
             <img
-              src="/assets/food/crawfish_crab.jpg"
+              src="assets/food/crawfish_crab.jpg"
               alt="Cajun boil"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -79,7 +79,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
             className="rounded-3xl overflow-hidden shadow-md h-80 relative group"
           >
             <img
-              src="/assets/food/matcha_drink.jpg"
+              src="assets/food/matcha_drink.jpg"
               alt="Organic matcha"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
