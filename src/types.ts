@@ -23,9 +23,10 @@ export interface RestaurantLocation {
   address: string;
   city: string;
   state: string;
-  zip: string;
-  phone: string;
-  hours: string;
+  zip?: string;
+  phone?: string;
+  hours?: string;
+  website?: string;
   status: 'Open' | 'Opening Soon';
   openingDate?: string;
   features: string[];

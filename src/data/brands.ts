@@ -23,7 +23,7 @@ export const BRANDS: BrandData[] = [
       'Live teppan sizzle',
       'Custom rolls made fresh'
     ],
-    websiteUrl: 'https://www.umiyakaty.com/',
+    websiteUrl: 'https://umiyatexas.com/',
     description: 'Fresh sliced bluefin tuna, salmon sashimi, warm garlic edamame, sizzling teppanyaki flame shows and hand crafted cocktails'
   },
   {
@@ -70,7 +70,7 @@ export const BRANDS: BrandData[] = [
       'Fresh daily sushi',
       'Warm glazed honey ribs'
     ],
-    websiteUrl: 'https://hibachigrillbuffet.com/',
+    websiteUrl: 'https://hibachigrillsupremebuffettx.com/',
     description: 'Over 300 daily fresh recipes, live flat top teppan flame shows, chilled oysters, fresh hand rolled sushi and carved meats'
   },
   {
@@ -92,7 +92,6 @@ export const BRANDS: BrandData[] = [
       'Fresh baked pastries',
       'Mindful matcha moments'
     ],
-    websiteUrl: 'https://matchazen.com/',
     description: 'Whisked ceremonial Uji green tea, silky whipped foam, iced oat cloud lattes and house churned matcha gelato'
   },
   {
@@ -115,7 +114,6 @@ export const BRANDS: BrandData[] = [
       'Crispy pan fried gyoza',
       'Craft highball cocktails'
     ],
-    websiteUrl: 'https://chilinrestaurant.com/',
     description: 'Rich sixteen hour simmered broth, springy hand pulled noodles, tender chashu pork, crispy gyoza and draft Japanese beer'
   },
   {
@@ -136,7 +134,6 @@ export const BRANDS: BrandData[] = [
       'Brewed loose leaf tea',
       'Energizing hydration'
     ],
-    websiteUrl: 'https://vivarefresh.com/',
     description: 'Chilled ripe mango purees, freshly squeezed Meyer lemons, crushed passionfruit and slow brewed botanical iced teas'
   }
 ];

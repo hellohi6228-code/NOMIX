@@ -33,7 +33,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({
           loc.name.toLowerCase().includes(q) ||
           loc.city.toLowerCase().includes(q) ||
           loc.state.toLowerCase().includes(q) ||
-          loc.zip.toLowerCase().includes(q) ||
+          (loc.zip ?? '').toLowerCase().includes(q) ||
           loc.brandName.toLowerCase().includes(q);
         if (!match) return false;
       }
@@ -121,7 +121,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredLocations.map((loc) => {
             const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              `${loc.name} ${loc.address} ${loc.city} ${loc.state} ${loc.zip}`
+              `${loc.brandName}, ${loc.address}, ${loc.city}, ${loc.state} ${loc.zip ?? ''}`
             )}`;
 
             return (
@@ -153,18 +153,21 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({
                   <div className="space-y-1 text-xs text-[#57534E]">
                     <div className="flex items-start gap-2">
                       <MapPin className="w-3.5 h-3.5 text-[#78716C] mt-0.5 shrink-0" />
-                      <span>{loc.address}, {loc.city}, {loc.state} {loc.zip}</span>
+                      <span>
+                        {loc.address ? `${loc.address}, ` : ''}{loc.city}, {loc.state} {loc.zip}
+                        {!loc.address && <span className="block text-[#78716C]">Exact address coming soon</span>}
+                      </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    {loc.phone && (<div className="flex items-center gap-2">
                       <Phone className="w-3.5 h-3.5 text-[#78716C] shrink-0" />
                       <a href={`tel:${loc.phone}`} className="font-mono text-[#1C1917]">
                         {loc.phone}
                       </a>
-                    </div>
-                    <div className="flex items-start gap-2 text-[11px] text-[#78716C]">
+                    </div>)}
+                    {(loc.hours || loc.openingDate) && (<div className="flex items-start gap-2 text-[11px] text-[#78716C]">
                       <Clock className="w-3.5 h-3.5 text-[#78716C] mt-0.5 shrink-0" />
-                      <span>{loc.hours}</span>
-                    </div>
+                      <span>{loc.hours ?? `Opening ${loc.openingDate}`}</span>
+                    </div>)}
                   </div>
                 </div>
 
@@ -175,7 +178,17 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({
                   >
                     Detail
                   </button>
-                  <a
+                  {loc.website && (
+                    <a
+                      href={loc.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-[#57534E] hover:text-[#1C1917]"
+                    >
+                      Website
+                    </a>
+                  )}
+                  {loc.address && (<a
                     href={mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -183,7 +196,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({
                   >
                     <Navigation className="w-3.5 h-3.5" />
                     Get Directions
-                  </a>
+                  </a>)}
                 </div>
               </div>
             );
