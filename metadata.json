@@ -1,0 +1,6 @@
+{
+  "name": "NOMIX Hospitality Group",
+  "description": "From Texas to the World. A family-led hospitality group behind Umiya, Surfing Crab, Hibachi Grill & Supreme Buffet, Matcha Zen, Chilin, and Viva Refresh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
