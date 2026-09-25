@@ -22,8 +22,8 @@ export const ContactPage: React.FC = () => {
       {/* Main Grid */}
       <section className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          <div className="lg:col-span-5 p-8 rounded-3xl bg-[#1C1917] text-white space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block">
+          <div className="lg:col-span-5 p-8 rounded-3xl bg-[#13110F] border border-[#CBB48B]/30 text-white space-y-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#CBB48B] block">
               Direct Contact
             </span>
             <p className="font-serif text-2xl text-amber-100 italic">
@@ -32,18 +32,18 @@ export const ContactPage: React.FC = () => {
 
             <div className="space-y-4 text-xs text-neutral-300 pt-2">
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-amber-400" />
-                <a href="mailto:hello@nomixus.com" className="text-sm font-bold text-white hover:text-amber-300">
+                <Mail className="w-4 h-4 text-[#CBB48B]" />
+                <a href="mailto:hello@nomixus.com" className="text-sm font-bold text-white hover:text-[#E2C99C]">
                   hello@nomixus.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-amber-400" />
+                <MapPin className="w-4 h-4 text-[#CBB48B]" />
                 <span className="text-sm text-neutral-200">Houston and Dallas, Texas</span>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-neutral-800 text-xs text-neutral-400 space-y-1">
+            <div className="pt-4 border-t border-[#CBB48B]/15 text-xs text-neutral-400 space-y-1">
               <span className="text-white font-bold block uppercase tracking-wider text-[10px]">
                 Real Estate & Landlords
               </span>
@@ -51,7 +51,7 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-white p-8 rounded-3xl border border-[#E7E3DC] shadow-xs">
+          <div className="lg:col-span-7 bg-[#13110F] p-8 rounded-3xl border border-[#2A251F] shadow-xs">
             {!submitted ? (
               <form
                 onSubmit={(e) => {
@@ -60,13 +60,13 @@ export const ContactPage: React.FC = () => {
                 }}
                 className="space-y-4"
               >
-                <h3 className="font-display font-bold text-2xl text-[#1C1917]">
+                <h3 className="font-display font-bold text-2xl text-[#F3EBDD]">
                   Send a Note
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                    <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
                       Your Name
                     </label>
                     <input
@@ -75,12 +75,12 @@ export const ContactPage: React.FC = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Your name"
-                      className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl"
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#0A0908] border border-[#2A251F] rounded-xl"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                    <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
                       Email Address
                     </label>
                     <input
@@ -89,28 +89,28 @@ export const ContactPage: React.FC = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Your email"
-                      className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl"
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#0A0908] border border-[#2A251F] rounded-xl"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                  <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
                     Inquiry Type
                   </label>
                   <select
                     required
                     value={inquiryType}
                     onChange={(e) => setInquiryType(e.target.value)}
-                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl cursor-pointer ${
-                      inquiryType ? 'text-[#1C1917]' : 'text-[#A8A29E]'
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#0A0908] border border-[#2A251F] rounded-xl cursor-pointer ${
+                      inquiryType ? 'text-[#F3EBDD]' : 'text-[#A8A29E]'
                     }`}
                   >
                     <option value="" disabled>
                       Select an inquiry type
                     </option>
                     {INQUIRY_TYPES.map((type) => (
-                      <option key={type} value={type} className="text-[#1C1917]">
+                      <option key={type} value={type} className="text-[#F3EBDD]">
                         {type}
                       </option>
                     ))}
@@ -118,36 +118,36 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                  <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
                     Your Message
                   </label>
                   <textarea
                     required
                     rows={4}
                     placeholder="Tell us what is on your mind"
-                    className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl"
+                    className="w-full px-3.5 py-2.5 text-sm bg-[#0A0908] border border-[#2A251F] rounded-xl"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#1C1917] hover:bg-[#292524] rounded-xl cursor-pointer"
+                  className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl cursor-pointer"
                 >
                   Send Message
                 </button>
               </form>
             ) : (
               <div className="text-center py-8 space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h3 className="font-display font-bold text-2xl text-[#1C1917]">
+                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
+                <h3 className="font-display font-bold text-2xl text-[#F3EBDD]">
                   Message Received
                 </h3>
-                <p className="text-xs text-[#57534E]">
+                <p className="text-xs text-[#B5AB9C]">
                   Thank you {name}, we will reply to {email} shortly
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-2 px-5 py-2 text-xs font-bold uppercase text-white bg-[#1C1917] rounded-xl cursor-pointer"
+                  className="mt-2 px-5 py-2 text-xs font-bold uppercase text-[#0A0908] bg-[#CBB48B] rounded-xl cursor-pointer"
                 >
                   Send Another
                 </button>

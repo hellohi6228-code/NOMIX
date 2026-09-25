@@ -11,7 +11,7 @@ interface BrandVisualArtProps {
 // Cuisine labels match the NOMIX deck's "Our Ventures" page.
 const BRAND_COVERS: Record<BrandId, { image: string; cuisine: string; fit: 'cover' | 'contain'; accent: string }> = {
   umiya: { image: 'assets/logos/umiya-cover.jpg', cuisine: 'AYCE Sushi', fit: 'cover', accent: 'text-rose-300' },
-  'surfing-crab': { image: 'assets/logos/surfing-crab-cover.jpg', cuisine: 'Southern Cajun', fit: 'cover', accent: 'text-amber-300' },
+  'surfing-crab': { image: 'assets/logos/surfing-crab-cover.jpg', cuisine: 'Southern Cajun', fit: 'cover', accent: 'text-[#E2C99C]' },
   'hibachi-buffet': { image: 'assets/logos/hibachi-buffet-cover.jpg', cuisine: 'Asian Fusion Buffet', fit: 'cover', accent: 'text-red-400' },
   'matcha-zen': { image: 'assets/logos/matcha-zen-cover.jpg', cuisine: 'Matcha, Gelato, Cafe', fit: 'cover', accent: 'text-lime-300' },
   chilin: { image: 'assets/logos/chilin-cover.jpg', cuisine: 'Asian Fusion Fast Casual', fit: 'cover', accent: 'text-amber-200' },
@@ -34,7 +34,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
           }`}
         />
       </div>
-      <div className="px-5 py-4 flex items-center justify-between gap-3 bg-[#141211] border-t border-white/5">
+      <div className="px-5 py-4 flex items-center justify-between gap-3 bg-[#070605] border-t border-white/5">
         <span className={`text-[11px] font-bold uppercase tracking-widest ${cover.accent}`}>{cover.cuisine}</span>
         <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400 border border-neutral-700 rounded px-2 py-0.5 shrink-0">
           {brand.locationCount}

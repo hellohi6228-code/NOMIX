@@ -5,9 +5,9 @@ import { RestaurantLocation } from '../types';
 import { formatWeeklyHours, isOpenNow, timeZoneForState } from '../utils/hours';
 
 export const BRAND_PIN_COLORS: Record<string, string> = {
-  umiya: '#B91C1C',
-  'surfing-crab': '#0369A1',
-  'hibachi-buffet': '#D97706',
+  umiya: '#F87171',
+  'surfing-crab': '#38BDF8',
+  'hibachi-buffet': '#FBBF24',
   'matcha-zen': '#4D7C0F',
   chilin: '#78350F',
   'viva-refresh': '#DB2777',
@@ -56,25 +56,31 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const markersRef = useRef<Map<string, L.CircleMarker>>(new Map());
+  // Frames the current pins; re-run after resizes because Leaflet can't fit bounds into a 0-size box
+  const frameRef = useRef<() => void>(() => {});
+  const userMovedRef = useRef(false);
+  const hasViewRef = useRef(false);
 
   useEffect(() => {
-    const map = L.map(containerRef.current!, { scrollWheelZoom: false, zoomControl: true });
-    // Free, keyless tiles. If CARTO is blocked (ad blockers, networks), swap to OpenStreetMap's own tiles.
-    const carto = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    const map = L.map(containerRef.current!, { scrollWheelZoom: false, zoomControl: true, zoomSnap: 0.5 });
+    // OpenStreetMap's own tiles need no API key (CARTO watermarks unregistered domains).
+    // The .nomix-dark-tiles filter in index.css turns them into a dark basemap.
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
+      className: 'nomix-dark-tiles',
     }).addTo(map);
-    let tileErrors = 0;
-    carto.on('tileerror', () => {
-      if (++tileErrors !== 3) return;
-      map.removeLayer(carto);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors',
-        maxZoom: 19,
-      }).addTo(map);
-    });
     mapRef.current = map;
+    // Once someone pans, zooms or taps the map, stop auto-reframing it on resize
+    map.getContainer().addEventListener('pointerdown', () => (userMovedRef.current = true));
+    // The page fades/slides in, so Leaflet's first size read can be stale; re-measure on any resize.
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize();
+      if (!userMovedRef.current) frameRef.current();
+    });
+    observer.observe(containerRef.current!);
     return () => {
+      observer.disconnect();
       map.remove();
       mapRef.current = null;
     };
@@ -90,7 +96,7 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
     for (const loc of pinned) {
       const marker = L.circleMarker([loc.lat!, loc.lng!], {
         radius: 8,
-        color: '#FFFFFF',
+        color: '#0A0908',
         weight: 2,
         fillColor: BRAND_PIN_COLORS[loc.brandId],
         fillOpacity: 1,
@@ -101,22 +107,42 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
       markersRef.current.set(loc.id, marker);
     }
 
-    if (pinned.length === 1) {
-      map.setView([pinned[0].lat!, pinned[0].lng!], 13);
-    } else if (pinned.length > 1) {
-      map.fitBounds(L.latLngBounds(pinned.map((l) => [l.lat!, l.lng!] as [number, number])), { padding: [40, 40] });
-    } else {
-      map.setView([37.5, -96], 4);
-    }
+    let retry: ReturnType<typeof setTimeout> | undefined;
+    frameRef.current = () => {
+      clearTimeout(retry);
+      map.invalidateSize();
+      if (map.getSize().x > 0) hasViewRef.current = true;
+      if (map.getSize().x === 0) {
+        // Not laid out yet (hidden tab, entrance animation): show the US and try again shortly
+        if (!hasViewRef.current) map.setView([37.5, -96], 4);
+        hasViewRef.current = true;
+        retry = setTimeout(() => frameRef.current(), 250);
+        return;
+      }
+      if (pinned.length === 1) {
+        map.setView([pinned[0].lat!, pinned[0].lng!], 13);
+      } else if (pinned.length > 1) {
+        map.fitBounds(L.latLngBounds(pinned.map((l) => [l.lat!, l.lng!] as [number, number])), {
+          padding: [40, 40],
+          maxZoom: 12,
+        });
+      } else {
+        map.setView([37.5, -96], 4);
+      }
+    };
+    userMovedRef.current = false;
+    frameRef.current();
+    return () => clearTimeout(retry);
   }, [locations]);
 
   useEffect(() => {
     if (!focus) return;
     const marker = markersRef.current.get(focus.id);
     if (!marker) return;
+    userMovedRef.current = true;
     mapRef.current!.flyTo(marker.getLatLng(), 14, { duration: 0.8 });
     marker.openPopup();
   }, [focus]);
 
-  return <div ref={containerRef} className="w-full h-[420px] sm:h-[480px] rounded-3xl overflow-hidden border border-[#E7E3DC] z-0" />;
+  return <div ref={containerRef} className="w-full h-[420px] sm:h-[480px] rounded-3xl overflow-hidden border border-[#CBB48B]/25 z-0 bg-[#0A0908]" />;
 };

@@ -78,30 +78,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 flex flex-col justify-center gap-9 lg:gap-11 text-left"
             >
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#1C1917] leading-[0.98]">
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gold-gradient leading-[0.98] pb-1">
                 From Texas
                 <br />
-                to the <span className="text-[#B45309]">World</span>
+                to the World
               </h1>
 
-              <div className="grid grid-cols-3 border-y border-[#E7E3DC] divide-x divide-[#E7E3DC] max-w-xl">
+              <div className="grid grid-cols-3 border-y border-[#2A251F] divide-x divide-[#2A251F] max-w-xl">
                 {HERO_STATS.map((stat) => (
                   <div key={stat.label} className="py-5 sm:py-6 px-4 sm:px-6 first:pl-0">
                     <span
                       className={`block font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tabular-nums tracking-tight leading-none ${
-                        stat.accent ? 'text-[#B45309]' : 'text-[#1C1917]'
+                        stat.accent ? 'text-[#CBB48B]' : 'text-[#F3EBDD]'
                       }`}
                     >
                       {stat.value}
                     </span>
-                    <span className="block text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] whitespace-nowrap text-[#78716C] mt-3">
+                    <span className="block text-[11px] sm:text-xs font-bold uppercase tracking-[0.12em] whitespace-nowrap text-[#8E8578] mt-3">
                       {stat.label}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-lg sm:text-xl lg:text-[1.375rem] text-[#44403C] leading-[1.6] max-w-lg">
+              <p className="text-lg sm:text-xl lg:text-[1.375rem] text-[#D3C8B8] leading-[1.6] max-w-lg">
                 Fresh sliced sushi, steaming cajun crab boils, roaring hibachi flame, hand whisked ceremonial matcha, slow simmered ramen broths
               </p>
             </motion.div>
@@ -113,7 +113,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 relative"
             >
-              <div className="relative h-80 sm:h-[480px] lg:h-[560px] w-full rounded-3xl overflow-hidden shadow-2xl bg-[#1C1917]">
+              <div className="relative h-80 sm:h-[480px] lg:h-[560px] w-full rounded-3xl overflow-hidden shadow-2xl bg-[#13110F]">
                 <AnimatePresence initial={false}>
                   <motion.img
                     key={currentSlide}
@@ -167,7 +167,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-7xl mx-auto px-6 md:px-10"
       >
-        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#1C1917] mb-8">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#F3EBDD] mb-8">
           Our Brands
         </h2>
 

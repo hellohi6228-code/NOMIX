@@ -16,10 +16,10 @@ export const BrandsPage: React.FC<BrandsPageProps> = ({ onOpenBrand, onViewLocat
       {/* Header */}
       <section className="pt-10 md:pt-16 max-w-7xl mx-auto px-6 md:px-10">
         <div className="max-w-3xl space-y-3">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917]">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F3EBDD]">
             Our Brands
           </h1>
-          <p className="font-serif text-2xl sm:text-3xl text-[#44403C] italic">
+          <p className="font-serif text-2xl sm:text-3xl text-[#D3C8B8] italic">
             Six distinct culinary concepts, real kitchens, real food
           </p>
         </div>

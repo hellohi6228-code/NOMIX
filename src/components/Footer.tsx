@@ -8,9 +8,9 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-[#141211] text-[#E7E5E4] border-t border-neutral-800">
+    <footer className="bg-[#070605] text-[#E7E5E4] border-t border-[#CBB48B]/15">
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-neutral-800/80">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#CBB48B]/15/80">
           <div className="lg:col-span-6 space-y-3">
             <span className="font-display text-2xl font-bold tracking-[0.2em] text-white uppercase block">
               NOMIX

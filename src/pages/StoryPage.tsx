@@ -18,13 +18,13 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl space-y-3"
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B45309]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#CBB48B]">
             The NOMIX Story
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917]">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F3EBDD]">
             Rooted in Texas
           </h1>
-          <p className="font-serif text-2xl sm:text-3xl text-[#44403C] italic">
+          <p className="font-serif text-2xl sm:text-3xl text-[#D3C8B8] italic">
             From one family table to six beloved hospitality brands
           </p>
         </motion.div>
@@ -46,7 +46,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-              <span className="text-xs uppercase font-bold text-amber-300">Live Flame</span>
+              <span className="text-xs uppercase font-bold text-[#E2C99C]">Live Flame</span>
               <h3 className="font-display font-bold text-xl">Theatrical Teppanyaki</h3>
             </div>
           </motion.div>
@@ -65,7 +65,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
-              <span className="text-xs uppercase font-bold text-amber-300">Coastal Flavors</span>
+              <span className="text-xs uppercase font-bold text-[#E2C99C]">Coastal Flavors</span>
               <h3 className="font-display font-bold text-xl">Southern Cajun Boil</h3>
             </div>
           </motion.div>
@@ -101,15 +101,15 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-7 rounded-2xl bg-white border border-[#E7E3DC] shadow-xs space-y-2.5"
+              className="p-7 rounded-2xl bg-[#13110F] border border-[#2A251F] shadow-xs space-y-2.5"
             >
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#B45309] bg-amber-50 px-2.5 py-1 rounded-md">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#CBB48B] bg-amber-50 px-2.5 py-1 rounded-md">
                 {item.badge}
               </span>
-              <h3 className="font-display font-bold text-xl text-[#1C1917] pt-1">
+              <h3 className="font-display font-bold text-xl text-[#F3EBDD] pt-1">
                 {item.headline}
               </h3>
-              <p className="text-xs text-[#57534E] leading-relaxed">
+              <p className="text-xs text-[#B5AB9C] leading-relaxed">
                 {item.note}
               </p>
             </motion.div>
@@ -121,10 +121,10 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onNavigate }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => onNavigate('brands')}
-            className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#1C1917] hover:bg-[#292524] rounded-xl transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl transition-all shadow-sm cursor-pointer"
           >
             Explore Our Brands
-            <ArrowRight className="w-4 h-4 text-amber-400" />
+            <ArrowRight className="w-4 h-4 text-[#CBB48B]" />
           </motion.button>
         </div>
       </section>

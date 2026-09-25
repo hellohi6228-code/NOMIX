@@ -45,7 +45,7 @@ export default function App() {
     : null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1C1917] selection:bg-[#B45309] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#0A0908] text-[#F3EBDD] selection:bg-[#CBB48B] selection:text-[#0A0908]">
       {/* Navigation Top Bar */}
       <Navbar currentView={currentView} onNavigate={handleNavigate} />
 
