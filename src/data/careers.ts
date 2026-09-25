@@ -1,24 +1,5 @@
 import { JobOpening } from '../types';
 
-export const CAREER_PERKS = [
-  {
-    title: 'Daily Family Meal',
-    desc: 'Sit down and eat delicious hot meals with the whole team before every shift'
-  },
-  {
-    title: 'Rise Together',
-    desc: 'Team members growing into kitchen supervisors, general managers, and regional leaders'
-  },
-  {
-    title: 'Culinary Craft',
-    desc: 'Master sushi slicing, flame wok teppan, cajun spices, craft cocktails, and matcha rituals'
-  },
-  {
-    title: 'Health & Care',
-    desc: 'Competitive pay, medical benefits, retirement matching, and generous dining perks'
-  }
-];
-
 export const CAREER_ROLES: JobOpening[] = [
   {
     id: 'gm-umiya',
@@ -51,7 +32,7 @@ export const CAREER_ROLES: JobOpening[] = [
     id: 'matcha-barista',
     title: 'Ritual Matcha Barista',
     department: 'Craft Beverage',
-    location: 'Houston The Heights, Texas',
+    location: 'Houston, Texas',
     brand: 'Matcha Zen',
     type: 'Full-time / Part-time',
     vibe: 'Hand whisking organic tea, einspanner foam, artisanal gelato'
@@ -60,7 +41,7 @@ export const CAREER_ROLES: JobOpening[] = [
     id: 'ramen-cook',
     title: 'Ramen & Izakaya Cook',
     department: 'Culinary Team',
-    location: 'Houston Washington Ave, Texas',
+    location: 'Houston, Texas',
     brand: 'Chilin',
     type: 'Full-time',
     vibe: '16-hour bone broths, hand pulled noodles, wok sear'

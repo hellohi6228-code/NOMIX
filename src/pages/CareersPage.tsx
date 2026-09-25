@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { ArrowRight, CheckCircle2, MapPin, X, Send } from 'lucide-react';
-import { CAREER_PERKS, CAREER_ROLES } from '../data/careers';
+import { CheckCircle2, MapPin, X, Upload } from 'lucide-react';
+import { CAREER_ROLES } from '../data/careers';
 import { JobOpening } from '../types';
 
 export const CareersPage: React.FC = () => {
@@ -9,57 +8,13 @@ export const CareersPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [resume, setResume] = useState<File | null>(null);
 
   return (
-    <div className="space-y-16 md:space-y-24 pb-24">
-      {/* Header with Visual Banner */}
-      <section className="pt-10 md:pt-16 max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-6 space-y-3"
-          >
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B45309]">
-              Careers at NOMIX
-            </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917]">
-              Join the Family
-            </h1>
-            <p className="font-serif text-2xl sm:text-3xl text-[#44403C] italic">
-              Real people, real food, pride in every plate
-            </p>
-            <p className="text-sm text-[#57534E]">
-              Over 70% of our general managers started on the dining room floor or behind the wok line
-            </p>
-          </motion.div>
-
-          <div className="lg:col-span-6 h-64 sm:h-80 rounded-3xl overflow-hidden shadow-lg relative">
-            <img src="assets/food/restaurant_vibe.jpg" alt="Restaurant team dining room" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6 text-white">
-              <span className="font-serif italic text-lg text-amber-200">The Daily Family Meal before every shift</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Perks Grid */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CAREER_PERKS.map((perk, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-2xl border border-[#E7E3DC] space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B45309]">
-                0{idx + 1}
-              </span>
-              <h3 className="font-display font-bold text-lg text-[#1C1917]">{perk.title}</h3>
-              <p className="text-xs text-[#57534E] leading-relaxed">{perk.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
+    <div className="pb-24">
       {/* Open Roles */}
-      <section className="bg-[#F5F2EB] py-16 border-y border-[#E7E3DC]">
+      <section className="bg-[#F5F2EB] py-16 border-b border-[#E7E3DC]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#1C1917]">
@@ -94,6 +49,7 @@ export const CareersPage: React.FC = () => {
                   onClick={() => {
                     setActiveJob(job);
                     setSubmitted(false);
+                    setResume(null);
                   }}
                   className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#1C1917] hover:bg-[#292524] rounded-xl transition-colors cursor-pointer shrink-0"
                 >
@@ -163,13 +119,35 @@ export const CareersPage: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
-                      Tell Us About Your Experience
+                      Phone Number
                     </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Share a short note about your hospitality background"
+                    <input
+                      type="tel"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="(555) 555-5555"
                       className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#E7E3DC] rounded-xl"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                      Resume
+                    </label>
+                    <label className="flex items-center gap-3 w-full px-3.5 py-3 text-sm bg-white border border-dashed border-[#D6D3D1] rounded-xl cursor-pointer hover:border-[#B45309]">
+                      <Upload className="w-4 h-4 text-[#B45309] shrink-0" />
+                      <span className={resume ? 'text-[#1C1917] truncate' : 'text-[#78716C]'}>
+                        {resume ? resume.name : 'Upload PDF or Word document'}
+                      </span>
+                      <input
+                        type="file"
+                        required
+                        accept=".pdf,.doc,.docx"
+                        onChange={(e) => setResume(e.target.files?.[0] ?? null)}
+                        className="sr-only"
+                      />
+                    </label>
                   </div>
                 </div>
 

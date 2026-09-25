@@ -2,6 +2,7 @@ import React from 'react';
 import { X, ExternalLink, MapPin } from 'lucide-react';
 import { BrandData } from '../types';
 import { BrandVisualArt } from './BrandVisualArt';
+import { RESTAURANT_LOCATIONS } from '../data/locations';
 
 interface BrandDetailModalProps {
   brand: BrandData | null;
@@ -50,20 +51,6 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
             {/* RIGHT COLUMN: BRAND DETAILS */}
             <div className="md:col-span-7 flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-[#B45309] border border-amber-200">
-                    {brand.cuisine}
-                  </span>
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#E7E3DC]">
-                    {brand.locationCount}
-                  </span>
-                  {brand.status && (
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
-                      {brand.status}
-                    </span>
-                  )}
-                </div>
-
                 <div>
                   <h3 className="font-display text-3xl font-extrabold text-[#1C1917]">
                     {brand.name}
@@ -100,7 +87,7 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
 
               {/* Action Buttons */}
               <div className="pt-4 border-t border-[#E7E3DC] flex flex-wrap items-center gap-3">
-                {onViewLocations && (
+                {onViewLocations && RESTAURANT_LOCATIONS.some((l) => l.brandId === brand.id) && (
                   <button
                     onClick={() => {
                       onViewLocations(brand.id);
@@ -125,23 +112,19 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
             </div>
           </div>
 
-          {/* MORE PICTURES OF FOOD SECTION */}
-          {brand.foodImages && brand.foodImages.length > 1 && (
-            <div className="pt-6 border-t border-[#E7E3DC] space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#78716C] block">
-                Food Cravings
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {brand.foodImages.slice(0, 4).map((fImg, idx) => (
+          {/* Auto-scrolling photo strip (list is doubled so the loop is seamless) */}
+          {brand.foodImages && brand.foodImages.length > 0 && (
+            <div className="pt-6 border-t border-[#E7E3DC] overflow-hidden">
+              <div
+                className="nomix-marquee flex gap-3 w-max"
+                style={{ animationDuration: `${brand.foodImages.length * 4}s` }}
+              >
+                {[...brand.foodImages, ...brand.foodImages].map((fImg, idx) => (
                   <div
                     key={idx}
-                    className="h-28 sm:h-32 rounded-xl overflow-hidden shadow-xs border border-[#E7E3DC] bg-neutral-900 group"
+                    className="h-32 sm:h-40 w-48 sm:w-60 shrink-0 rounded-xl overflow-hidden shadow-xs border border-[#E7E3DC] bg-neutral-900"
                   >
-                    <img
-                      src={fImg}
-                      alt="Food"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src={fImg} alt={brand.name} loading="lazy" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>

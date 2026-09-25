@@ -1,13 +1,13 @@
 import { RestaurantLocation } from '../types';
+import { weekly } from '../utils/hours';
 
-// Verified against each restaurant's own website / public listings (Sep 2026).
-// Leave phone/hours/address blank rather than guessing — the UI hides empty fields.
+// Operating restaurants only, verified against each restaurant's own website / public listings (Sep 2026).
+// Leave phone/hours/address/coords off rather than guessing; the UI hides what's missing.
 
-const UMIYA_FEATURES = ['AYCE Sushi & Sashimi', 'Hibachi & Hot Kitchen', 'Japanese Classics'];
-const SURFING_CRAB_FEATURES = ['Cajun Seafood Boil', 'Combo Platters', 'Full Bar'];
+const UMIYA_STANDARD_HOURS = weekly({ 'sun-thu': '11:00-22:00', 'fri-sat': '11:00-22:30' });
 
 export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
-  // --- UMIYA LOCATIONS ---
+  // --- UMIYA ---
   {
     id: 'umiya-houston-midtown',
     brandId: 'umiya',
@@ -18,10 +18,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '77002',
     phone: '(832) 596-9993',
-    hours: 'Mon-Thu & Sun: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://umiyatexas.com/midtown',
-    features: ['AYCE Sushi & Sashimi', 'Astronaut Themed Dining Room', 'Hibachi & Hot Kitchen']
+    lat: 29.75067,
+    lng: -95.37547
   },
   {
     id: 'umiya-houston-katy-fwy',
@@ -33,10 +33,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '77024',
     phone: '(713) 338-0808',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://www.umiyakaty.com/',
-    features: UMIYA_FEATURES
+    lat: 29.78474,
+    lng: -95.52749
   },
   {
     id: 'umiya-humble',
@@ -48,9 +48,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '77338',
     phone: '(281) 319-4567',
-    status: 'Open',
+    hours: weekly({ 'sun-thu': '11:00-21:30', 'fri-sat': '11:00-22:00' }),
     website: 'https://umiyatexas.com/',
-    features: UMIYA_FEATURES
+    lat: 30.00812,
+    lng: -95.26593
   },
   {
     id: 'umiya-frisco',
@@ -62,10 +63,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '75034',
     phone: '(214) 407-8066',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://www.umiyafrisco.com/',
-    features: UMIYA_FEATURES
+    lat: 33.10566,
+    lng: -96.80681
   },
   {
     id: 'umiya-san-antonio-huebner',
@@ -77,10 +78,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78230',
     phone: '(210) 455-0299',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://umiyasa.com/',
-    features: UMIYA_FEATURES
+    lat: 29.54838,
+    lng: -98.57887
   },
   {
     id: 'umiya-san-antonio-live-oak',
@@ -91,10 +92,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     city: 'Live Oak',
     state: 'Texas',
     phone: '(210) 314-3690',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://umiyasa.com/',
-    features: UMIYA_FEATURES
+    lat: 29.5668,
+    lng: -98.33537
   },
   {
     id: 'umiya-san-antonio-seaworld',
@@ -106,25 +107,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78251',
     phone: '(210) 957-1255',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://umiyasa.com/',
-    features: UMIYA_FEATURES
-  },
-  {
-    id: 'umiya-waco',
-    brandId: 'umiya',
-    brandName: 'Umiya',
-    name: 'Umiya Sushi & Hot Pot Waco',
-    address: '4651 S Jack Kultgen Expy',
-    city: 'Waco',
-    state: 'Texas',
-    zip: '76706',
-    phone: '(254) 301-7182',
-    hours: 'Sun-Thu: 11:00 AM - 9:30 PM | Fri-Sat: 11:00 AM - 10:00 PM',
-    status: 'Opening Soon',
-    website: 'https://www.umiyawaco.com/',
-    features: ['AYCE Sushi & Hot Pot', 'Hibachi & Hot Kitchen', 'Japanese Classics']
+    lat: 29.46417,
+    lng: -98.67394
   },
   {
     id: 'umiya-corpus-christi',
@@ -136,9 +122,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78411',
     phone: '(361) 814-7888',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://www.umiyacc.com/',
-    features: UMIYA_FEATURES
+    lat: 27.71994,
+    lng: -97.39598
   },
   {
     id: 'umiya-mcallen',
@@ -150,8 +137,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78504',
     phone: '(956) 627-0925',
-    status: 'Open',
-    features: UMIYA_FEATURES
+    hours: UMIYA_STANDARD_HOURS,
+    lat: 26.24311,
+    lng: -98.22319
   },
   {
     id: 'umiya-pharr',
@@ -163,9 +151,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78577',
     phone: '(956) 258-5808',
-    hours: 'Sun-Thu: 11:00 AM - 9:30 PM | Fri-Sat: 11:00 AM - 10:00 PM',
-    status: 'Open',
-    features: UMIYA_FEATURES
+    hours: weekly({ 'sun-thu': '11:00-21:30', 'fri-sat': '11:00-22:00' }),
+    lat: 26.18325,
+    lng: -98.20674
   },
   {
     id: 'umiya-lubbock',
@@ -177,10 +165,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '79414',
     phone: '(806) 701-1970',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 10:30 PM',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://www.umiyalbb.com/',
-    features: UMIYA_FEATURES
+    lat: 33.534,
+    lng: -101.9154
   },
   {
     id: 'umiya-leander',
@@ -192,9 +180,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78641',
     phone: '(512) 986-4025',
-    status: 'Open',
     website: 'https://www.umiyaleander.com/',
-    features: UMIYA_FEATURES
+    lat: 30.54516,
+    lng: -97.86347
   },
   {
     id: 'umiya-lic',
@@ -206,9 +194,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'New York',
     zip: '11101',
     phone: '(929) 728-1868',
-    status: 'Open',
     website: 'https://www.nyumiya.com/',
-    features: UMIYA_FEATURES
+    lat: 40.74524,
+    lng: -73.94669
   },
   {
     id: 'umiya-edison',
@@ -217,9 +205,7 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     name: 'Umiya Edison',
     address: '',
     city: 'Edison',
-    state: 'New Jersey',
-    status: 'Open',
-    features: UMIYA_FEATURES
+    state: 'New Jersey'
   },
   {
     id: 'umiya-las-vegas',
@@ -231,10 +217,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Nevada',
     zip: '89103',
     phone: '(702) 365-6195',
-    hours: 'Daily: 11:30 AM - 12:30 AM',
-    status: 'Open',
+    hours: weekly({ 'sun-sat': '11:30-00:30' }),
     website: 'https://umiyalv.com/',
-    features: ['AYCE Sushi & Sashimi', 'Late Night AYCE', 'Near the Palms']
+    lat: 36.11568,
+    lng: -115.20065
   },
   {
     id: 'umiya-alexandria',
@@ -246,10 +232,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Virginia',
     zip: '22314',
     phone: '(703) 564-1800',
-    hours: 'Mon-Thu: 11:00 AM - 10:00 PM | Fri: 11:00 AM - 11:00 PM | Sat: 12:00 PM - 11:00 PM | Sun: 12:00 PM - 10:00 PM',
-    status: 'Open',
+    hours: weekly({ 'mon-thu': '11:00-22:00', fri: '11:00-23:00', sat: '12:00-23:00', sun: '12:00-22:00' }),
     website: 'https://www.umiyasushiva.com/',
-    features: UMIYA_FEATURES
+    lat: 38.80717,
+    lng: -77.08149
   },
   {
     id: 'umiya-memphis',
@@ -261,9 +247,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Tennessee',
     zip: '38133',
     phone: '(901) 425-5606',
-    status: 'Open',
+    hours: UMIYA_STANDARD_HOURS,
     website: 'https://www.umiyamemphis.com/',
-    features: UMIYA_FEATURES
+    lat: 35.19939,
+    lng: -89.79245
   },
   {
     id: 'umiya-jensen-beach',
@@ -275,13 +262,13 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Florida',
     zip: '34957',
     phone: '(772) 261-8611',
-    hours: 'Daily: 11:00 AM - 10:00 PM',
-    status: 'Open',
+    hours: weekly({ 'sun-sat': '11:00-22:00' }),
     website: 'https://www.umiyafl.com/',
-    features: ['AYCE Sushi & Seafood', 'Hot Pot', 'Hibachi & Hot Kitchen']
+    lat: 27.24438,
+    lng: -80.27179
   },
 
-  // --- SURFING CRAB LOCATIONS (source: surfingcrabtx.com/locations) ---
+  // --- SURFING CRAB (source: surfingcrabtx.com/locations) ---
   {
     id: 'surfing-crab-cc-spid',
     brandId: 'surfing-crab',
@@ -292,9 +279,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78411',
     phone: '(361) 462-4707',
-    status: 'Open',
+    hours: weekly({ 'tue-thu': '11:30-22:00', 'fri-sat': '11:30-22:30', sun: '11:30-22:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 27.71205,
+    lng: -97.37973
   },
   {
     id: 'surfing-crab-cc-staples',
@@ -306,9 +294,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78413',
     phone: '(361) 414-9446',
-    status: 'Open',
+    hours: weekly({ 'sun-mon,wed-thu': '11:30-22:00', 'fri-sat': '11:30-23:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 27.68678,
+    lng: -97.3826
   },
   {
     id: 'surfing-crab-cc-calallen',
@@ -320,22 +309,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78410',
     phone: '(361) 504-4221',
-    status: 'Open',
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
-  },
-  {
-    id: 'surfing-crab-cc-padre-island',
-    brandId: 'surfing-crab',
-    brandName: 'Surfing Crab',
-    name: 'Surfing Crab Corpus Christi (Padre Island)',
-    address: '14030 S Padre Island Dr',
-    city: 'Corpus Christi',
-    state: 'Texas',
-    zip: '78418',
-    status: 'Opening Soon',
-    website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 27.845,
+    lng: -97.598
   },
   {
     id: 'surfing-crab-portland',
@@ -347,9 +323,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78374',
     phone: '(361) 977-2088',
-    status: 'Open',
+    hours: weekly({ 'sun-tue,thu': '11:30-22:00', 'fri-sat': '11:30-22:30' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 27.88454,
+    lng: -97.31581
   },
   {
     id: 'surfing-crab-san-antonio',
@@ -361,9 +338,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78230',
     phone: '(210) 310-3150',
-    status: 'Open',
+    hours: weekly({ 'mon-thu': '11:00-22:00', 'fri-sat': '11:00-23:00', sun: '12:00-22:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 29.55162,
+    lng: -98.58662
   },
   {
     id: 'surfing-crab-round-rock',
@@ -375,9 +353,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78664',
     phone: '(512) 215-2454',
-    status: 'Open',
+    hours: weekly({ 'sun-mon,wed-thu': '11:30-22:00', 'fri-sat': '11:30-23:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 30.47702,
+    lng: -97.6725
   },
   {
     id: 'surfing-crab-san-marcos',
@@ -389,9 +368,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78666',
     phone: '(512) 216-6159',
-    status: 'Open',
+    hours: weekly({ 'sun-mon,wed-thu': '11:30-22:00', 'fri-sat': '11:30-23:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 29.86707,
+    lng: -97.94051
   },
   {
     id: 'surfing-crab-laredo',
@@ -403,9 +383,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78041',
     phone: '(956) 568-8543',
-    status: 'Open',
+    hours: weekly({ 'mon-thu': '11:30-22:00', 'fri-sat': '11:30-22:30', sun: '11:30-21:30' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: ['Cajun Seafood Boil', 'The Chosen Juan Platter', 'Full Bar']
+    lat: 27.54371,
+    lng: -99.4994
   },
   {
     id: 'surfing-crab-brownsville',
@@ -417,9 +398,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78526',
     phone: '(956) 443-0355',
-    status: 'Open',
-    website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    hours: weekly({ 'sun-thu': '11:30-22:30', 'fri-sat': '11:30-23:00' }),
+    website: 'https://www.surfingcrabbrownsville.com/',
+    lat: 25.90243,
+    lng: -97.49817
   },
   {
     id: 'surfing-crab-mcallen',
@@ -431,22 +413,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78504',
     phone: '(956) 803-0088',
-    status: 'Open',
+    hours: weekly({ 'sun-thu': '11:30-22:30', 'fri-sat': '11:30-23:00' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
-  },
-  {
-    id: 'surfing-crab-mcallen-expressway',
-    brandId: 'surfing-crab',
-    brandName: 'Surfing Crab',
-    name: 'Surfing Crab McAllen (Expressway 83)',
-    address: '410 E Expressway 83',
-    city: 'McAllen',
-    state: 'Texas',
-    zip: '78503',
-    status: 'Opening Soon',
-    website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 26.23666,
+    lng: -98.20229
   },
   {
     id: 'surfing-crab-victoria',
@@ -458,9 +428,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '77904',
     phone: '(361) 894-7210',
-    status: 'Open',
+    hours: weekly({ 'sun-tue,thu': '11:30-22:00', 'fri-sat': '11:30-22:30' }),
     website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    lat: 28.79838,
+    lng: -97.00085
   },
   {
     id: 'surfing-crab-escondido',
@@ -472,9 +443,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'California',
     zip: '92025',
     phone: '(760) 270-2551',
-    status: 'Open',
-    website: 'https://surfingcrabtx.com/locations/',
-    features: SURFING_CRAB_FEATURES
+    hours: weekly({ 'sun-thu': '11:30-22:30', 'fri-sat': '11:30-23:00' }),
+    website: 'https://www.surfingcrabca.com/',
+    lat: 33.06887,
+    lng: -117.06786
   },
   {
     id: 'surfing-crab-lewes',
@@ -486,8 +458,10 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Delaware',
     zip: '19958',
     phone: '(302) 644-4448',
-    status: 'Open',
-    features: ['Steamed Crabs & Seafood', 'Coastal Highway', 'Full Bar']
+    hours: weekly({ 'mon,wed-fri': '15:00-21:00', 'sat-sun': '12:00-21:00' }),
+    website: 'https://www.thesurfingcrab.com/',
+    lat: 38.7572,
+    lng: -75.19618
   },
 
   // --- HIBACHI GRILL & SUPREME BUFFET ---
@@ -501,37 +475,9 @@ export const RESTAURANT_LOCATIONS: RestaurantLocation[] = [
     state: 'Texas',
     zip: '78411',
     phone: '(361) 991-6888',
-    hours: 'Sun-Thu: 11:00 AM - 10:00 PM | Fri-Sat: 11:00 AM - 11:00 PM',
-    status: 'Open',
+    hours: weekly({ 'sun-thu': '11:00-22:00', 'fri-sat': '11:00-23:00' }),
     website: 'https://hibachigrillsupremebuffettx.com/',
-    features: ['Buffet, Hibachi & Sushi', 'Made-to-Order Hibachi', 'Steak & Seafood']
-  },
-
-  // --- MATCHA ZEN ---
-  {
-    id: 'matcha-zen-houston',
-    brandId: 'matcha-zen',
-    brandName: 'Matcha Zen',
-    name: 'Matcha Zen Houston',
-    address: '',
-    city: 'Houston',
-    state: 'Texas',
-    status: 'Opening Soon',
-    openingDate: 'October 2026',
-    features: ['100% Organic Matcha', 'Matcha Gelato & Gelato Cakes', 'Bakery']
-  },
-
-  // --- CHILIN ---
-  {
-    id: 'chilin-houston',
-    brandId: 'chilin',
-    brandName: 'Chilin',
-    name: 'Chilin Asian Kitchen & Bar Houston',
-    address: '',
-    city: 'Houston',
-    state: 'Texas',
-    status: 'Opening Soon',
-    openingDate: 'October 2026',
-    features: ['Hand-Pulled Ramen', 'Izakaya Small Plates', 'Asian Rice Bowls']
+    lat: 27.70524,
+    lng: -97.37137
   }
 ];

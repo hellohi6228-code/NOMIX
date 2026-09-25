@@ -1,3 +1,5 @@
+import type { WeeklyHours } from './utils/hours';
+
 export type BrandId = 'umiya' | 'surfing-crab' | 'hibachi-buffet' | 'matcha-zen' | 'chilin' | 'viva-refresh';
 
 export interface BrandData {
@@ -25,11 +27,10 @@ export interface RestaurantLocation {
   state: string;
   zip?: string;
   phone?: string;
-  hours?: string;
+  hours?: WeeklyHours;
   website?: string;
-  status: 'Open' | 'Opening Soon';
-  openingDate?: string;
-  features: string[];
+  lat?: number;
+  lng?: number;
 }
 
 export interface JobOpening {

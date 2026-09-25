@@ -19,7 +19,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
         <div className="relative z-10 p-6 flex flex-col h-full justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs uppercase tracking-widest text-red-400 font-medium">Japanese AYCE</span>
-            <span className="text-[10px] tracking-wider uppercase text-neutral-400 border border-neutral-800 rounded px-2 py-0.5">20+ US Units</span>
+            <span className="text-[10px] tracking-wider uppercase text-neutral-400 border border-neutral-800 rounded px-2 py-0.5">20+ Locations</span>
           </div>
 
           <div className="my-6 flex flex-col items-center justify-center text-center">
@@ -49,11 +49,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
                 <span className="block text-[10px] text-neutral-500 uppercase tracking-wider">Dining</span>
                 <span className="font-medium text-white">Elevated AYCE</span>
               </div>
-            </div>
-
-            <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between text-xs text-neutral-400">
-              <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-              <span className="text-red-400 group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
             </div>
           </div>
         </div>
@@ -109,11 +104,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
                 <span className="font-semibold text-white">Communal Feast</span>
               </div>
             </div>
-
-            <div className="pt-3 border-t border-sky-400/30 flex items-center justify-between text-xs text-sky-200">
-              <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-              <span className="text-amber-300 group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
-            </div>
           </div>
         </div>
       </div>
@@ -130,7 +120,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
         <div className="relative z-10 p-6 flex flex-col h-full justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs uppercase tracking-widest text-amber-400 font-medium">Buffet · Hibachi · Sushi</span>
-            <span className="text-[10px] tracking-wider uppercase text-neutral-400 border border-neutral-700 rounded px-2 py-0.5">7 Hubs Nationwide</span>
+            <span className="text-[10px] tracking-wider uppercase text-neutral-400 border border-neutral-700 rounded px-2 py-0.5">7 Locations</span>
           </div>
 
           <div className="my-6 flex flex-col items-center justify-center text-center">
@@ -166,11 +156,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
                 <span className="font-medium text-white">Live Flame Teppan</span>
               </div>
             </div>
-
-            <div className="pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
-              <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-              <span className="text-amber-400 group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
-            </div>
           </div>
         </div>
       </div>
@@ -187,7 +172,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
         <div className="relative z-10 p-6 flex flex-col h-full justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs uppercase tracking-widest text-lime-400 font-medium">The Ritual of Cha</span>
-            <span className="text-[10px] tracking-wider uppercase text-lime-200/90 border border-lime-800/60 rounded px-2 py-0.5">Houston · Oct 2026</span>
+            <span className="text-[10px] tracking-wider uppercase text-lime-200/90 border border-lime-800/60 rounded px-2 py-0.5">3 Locations</span>
           </div>
 
           <div className="my-6 flex flex-col items-center justify-center text-center">
@@ -221,11 +206,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
                 <span className="font-medium text-white">Wabi-Sabi Calm</span>
               </div>
             </div>
-
-            <div className="pt-3 border-t border-lime-900/60 flex items-center justify-between text-xs text-lime-300/80">
-              <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-              <span className="text-lime-300 group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
-            </div>
           </div>
         </div>
       </div>
@@ -242,7 +222,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
         <div className="relative z-10 p-6 flex flex-col h-full justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-medium">Asian Kitchen & Bar</span>
-            <span className="text-[10px] tracking-wider uppercase text-amber-200/80 border border-amber-900/60 rounded px-2 py-0.5">Houston · Oct 2026</span>
+            <span className="text-[10px] tracking-wider uppercase text-amber-200/80 border border-amber-900/60 rounded px-2 py-0.5">1 Location</span>
           </div>
 
           <div className="my-6 flex flex-col items-center justify-center text-center">
@@ -276,11 +256,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
                 <span className="font-medium text-white">Day-to-Night</span>
               </div>
             </div>
-
-            <div className="pt-3 border-t border-amber-900/50 flex items-center justify-between text-xs text-amber-200/70">
-              <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-              <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
-            </div>
           </div>
         </div>
       </div>
@@ -294,7 +269,7 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
       <div className="relative z-10 p-6 flex flex-col h-full justify-between">
         <div className="flex items-center justify-between">
           <span className="text-xs uppercase tracking-widest text-sky-200 font-medium">Hype Drinks & Fruit Coolers</span>
-          <span className="text-[10px] tracking-wider uppercase text-sky-100 border border-sky-400/40 rounded px-2 py-0.5">Dynamic Refresher</span>
+          <span className="text-[10px] tracking-wider uppercase text-sky-100 border border-sky-400/40 rounded px-2 py-0.5">1 Location</span>
         </div>
 
         <div className="my-6 flex flex-col items-center justify-center text-center">
@@ -326,11 +301,6 @@ export const BrandVisualArt: React.FC<BrandVisualArtProps> = ({ brandId, classNa
               <span className="block text-[10px] text-sky-200 uppercase tracking-wider">Pace</span>
               <span className="font-semibold text-white">Grab & Go</span>
             </div>
-          </div>
-
-          <div className="pt-3 border-t border-sky-400/30 flex items-center justify-between text-xs text-sky-200">
-            <span className="text-[11px] font-semibold tracking-wider uppercase">Explore Concept</span>
-            <span className="text-white group-hover:translate-x-1 transition-transform font-bold text-sm">→</span>
           </div>
         </div>
       </div>

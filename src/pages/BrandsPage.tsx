@@ -16,9 +16,6 @@ export const BrandsPage: React.FC<BrandsPageProps> = ({ onOpenBrand, onViewLocat
       {/* Header */}
       <section className="pt-10 md:pt-16 max-w-7xl mx-auto px-6 md:px-10">
         <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B45309]">
-            The NOMIX Portfolio
-          </span>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917]">
             Our Brands
           </h1>

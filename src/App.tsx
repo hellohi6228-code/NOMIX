@@ -70,10 +70,7 @@ export default function App() {
         )}
 
         {currentView === 'locations' && (
-          <LocationsPage
-            initialBrandFilter={locationsBrandFilter}
-            onOpenBrand={handleOpenBrandModal}
-          />
+          <LocationsPage key={locationsBrandFilter} initialBrandFilter={locationsBrandFilter} />
         )}
 
         {currentView === 'careers' && (

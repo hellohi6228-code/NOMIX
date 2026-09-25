@@ -11,17 +11,24 @@ export const BRANDS: BrandData[] = [
     status: 'Open Nationwide',
     image: 'assets/food/umiya_sushi.jpg',
     foodImages: [
-      'assets/food/umiya_sushi.jpg',
-      'assets/food/umiya_wagyu.jpg',
-      'assets/food/umiya_platter.webp',
-      'assets/food/umiya_sashimi.webp',
-      'assets/food/umiya_rolls.webp'
+      'assets/brands/umiya-sushi-bar.jpg',
+      'assets/brands/umiya-teppan.jpg',
+      'assets/brands/umiya-wagyu.jpg',
+      'assets/brands/umiya-rolls.jpg',
+      'assets/brands/umiya-blossoms.jpg',
+      'assets/brands/umiya-sushi-boat.jpg',
+      'assets/brands/umiya-bento.jpg',
+      'assets/brands/umiya-astronaut.jpg',
+      'assets/brands/umiya-dining.jpg',
+      'assets/brands/umiya-exterior.jpg',
+      'assets/brands/umiya-lounge.jpg'
     ],
     highlights: [
-      'Daily sliced sashimi',
-      'A5 Wagyu torched bites',
-      'Live teppan sizzle',
-      'Custom rolls made fresh'
+      'Lobster King Roll',
+      'Amazing Tuna Roll',
+      'A5 Wagyu Sando',
+      'Cheese Baked Lobster',
+      'Toro & Uni Nigiri'
     ],
     websiteUrl: 'https://umiyatexas.com/',
     description: 'Fresh sliced bluefin tuna, salmon sashimi, warm garlic edamame, sizzling teppanyaki flame shows and hand crafted cocktails'
@@ -36,16 +43,23 @@ export const BRANDS: BrandData[] = [
     status: 'Open',
     image: 'assets/food/surfing_dish_boil.jpg',
     foodImages: [
-      'assets/food/surfing_dish_boil.jpg',
-      'assets/food/surfing_dish_combo.jpg',
-      'assets/food/surfing_dish_crablegs.jpg',
-      'assets/food/crawfish_crab.jpg'
+      'assets/brands/surfingcrab-crawfish.jpg',
+      'assets/brands/surfingcrab-friends.jpg',
+      'assets/brands/surfingcrab-clams.jpg',
+      'assets/brands/surfingcrab-mussels.jpg',
+      'assets/brands/surfingcrab-dining.jpg',
+      'assets/brands/surfingcrab-party.jpg',
+      'assets/brands/surfingcrab-skillet.jpg',
+      'assets/brands/surfingcrab-bar.jpg',
+      'assets/brands/surfingcrab-entrance.jpg',
+      'assets/brands/surfingcrab-exterior.jpg'
     ],
     highlights: [
-      'Fresh crab clusters',
-      'Signature garlic butter boil',
-      'Sweet yellow corn',
-      'Spicy cajun kick'
+      'King Crab Leg Combo',
+      'Snow Crab Leg Combo',
+      'Surfing Special Boil',
+      'Surfing Crab Loaded Fries',
+      'Fried Jumbo Shrimp Basket'
     ],
     websiteUrl: 'https://surfingcrabtx.com/',
     description: 'Steaming king crab clusters, wild Gulf crawfish and jumbo shrimp tossed in signature warm garlic butter with sweet corn'
@@ -60,15 +74,26 @@ export const BRANDS: BrandData[] = [
     status: 'Open',
     image: 'assets/food/hibachi_flame.jpg',
     foodImages: [
-      'assets/food/hibachi_flame.jpg',
-      'assets/food/dim_sum.jpg',
-      'assets/food/asian_noodles.jpg'
+      'assets/brands/hibachi-flame.jpg',
+      'assets/brands/hibachi-seafood.jpg',
+      'assets/brands/hibachi-friends.jpg',
+      'assets/brands/hibachi-carving.jpg',
+      'assets/brands/hibachi-buffet.jpg',
+      'assets/brands/hibachi-lobster.jpg',
+      'assets/brands/hibachi-wok.jpg',
+      'assets/brands/hibachi-chef.jpg',
+      'assets/brands/hibachi-teppan.jpg',
+      'assets/brands/hibachi-table.jpg',
+      'assets/brands/hibachi-steak.jpg',
+      'assets/brands/hibachi-grill.jpg',
+      'assets/brands/hibachi-dining.jpg'
     ],
     highlights: [
-      'Live flat top grill',
-      'Chilled raw seafood',
-      'Fresh daily sushi',
-      'Warm glazed honey ribs'
+      'Hibachi Steak Fried Rice',
+      'Spicy Tuna Roll',
+      "General Tso's Chicken",
+      'Crab Rangoon',
+      'House Special Lo Mein'
     ],
     websiteUrl: 'https://hibachigrillsupremebuffettx.com/',
     description: 'Over 300 daily fresh recipes, live flat top teppan flame shows, chilled oysters, fresh hand rolled sushi and carved meats'
@@ -78,19 +103,36 @@ export const BRANDS: BrandData[] = [
     name: 'Matcha Zen',
     subtitle: 'Ceremonial Matcha & Daily Rituals',
     cuisine: 'Organic Uji Matcha Bar',
-    locationCount: 'Houston Oct 2026',
+    locationCount: '3 Locations',
     states: ['Texas'],
-    status: 'Opening Soon',
-    image: 'assets/food/matcha_drink.jpg',
+    status: 'Opening Oct 2026',
+    image: 'assets/brands/matchazen-drink.jpg',
     foodImages: [
-      'assets/food/matcha_drink.jpg',
-      'assets/food/matcha_gelato.jpg'
+      'assets/brands/matchazen-cheers.jpg',
+      'assets/brands/matchazen-drink.jpg',
+      'assets/brands/matchazen-gelato.jpg',
+      'assets/brands/matchazen-lineup.jpg',
+      'assets/brands/matchazen-cakes.jpg',
+      'assets/brands/matchazen-smile.jpg',
+      'assets/brands/matchazen-gelato-bowls.jpg',
+      'assets/brands/matchazen-blue-cake.jpg',
+      'assets/brands/matchazen-drip.jpg',
+      'assets/brands/matchazen-bakery.jpg',
+      'assets/brands/matchazen-tasting.jpg',
+      'assets/brands/matchazen-donuts.jpg',
+      'assets/brands/matchazen-whisk.jpg',
+      'assets/brands/matchazen-friends.jpg',
+      'assets/brands/matchazen-store.jpg',
+      'assets/brands/matchazen-interior.jpg',
+      'assets/brands/matchazen-cafe.jpg',
+      'assets/brands/matchazen-leaves.jpg'
     ],
     highlights: [
-      'Pure ceremonial grade',
-      'Seven gelato intensities',
-      'Fresh baked pastries',
-      'Mindful matcha moments'
+      'Signature Matcha Latte',
+      'Whipped Matcha Einspanner',
+      'Dirty Matcha Cold Foam',
+      'Lemonade Matcha Fizz',
+      'Matcha Gelato Cake'
     ],
     description: 'Whisked ceremonial Uji green tea, silky whipped foam, iced oat cloud lattes and house churned matcha gelato'
   },
@@ -99,20 +141,40 @@ export const BRANDS: BrandData[] = [
     name: 'Chilin',
     subtitle: 'Hand Pulled Ramen & Izakaya Bites',
     cuisine: 'Ramen & Social Plates',
-    locationCount: 'Houston Oct 2026',
+    locationCount: '1 Location',
     states: ['Texas'],
-    status: 'Opening Soon',
-    image: 'assets/food/chilin_ramen.jpg',
+    status: 'Opening Oct 2026',
+    image: 'assets/brands/chilin-ramen.jpg',
     foodImages: [
-      'assets/food/chilin_ramen.jpg',
-      'assets/food/dim_sum.jpg',
-      'assets/food/asian_noodles.jpg'
+      'assets/brands/chilin-ramen.jpg',
+      'assets/brands/chilin-xiao-long-bao.jpg',
+      'assets/brands/chilin-pork-belly-bao.jpg',
+      'assets/brands/chilin-chow-mein.jpg',
+      'assets/brands/chilin-interior.jpg',
+      'assets/brands/chilin-tom-yum.jpg',
+      'assets/brands/chilin-shrimp-tempura.jpg',
+      'assets/brands/chilin-guava-matcha.jpg',
+      'assets/brands/chilin-steak-rice.jpg',
+      'assets/brands/chilin-dumplings.jpg',
+      'assets/brands/chilin-snow-ice.jpg',
+      'assets/brands/chilin-chicken-wings.jpg',
+      'assets/brands/chilin-mushroom-ramen.jpg',
+      'assets/brands/chilin-kale-cooler.jpg',
+      'assets/brands/chilin-lamps.jpg',
+      'assets/brands/chilin-chicken-ramen.jpg',
+      'assets/brands/chilin-flatbread.jpg',
+      'assets/brands/chilin-sprouts.jpg',
+      'assets/brands/chilin-oolong-spritz.jpg',
+      'assets/brands/chilin-storefront.jpg',
+      'assets/brands/chilin-hall.jpg',
+      'assets/brands/chilin-dining.jpg'
     ],
     highlights: [
-      'Sixteen hour broth',
-      'Hand pulled noodles',
-      'Crispy pan fried gyoza',
-      'Craft highball cocktails'
+      'Tonkotsu Chashu Ramen',
+      'Classic Xiao Long Bao',
+      'Pork Belly Bao',
+      'Chow Mein with Filet Mignon',
+      'Matcha Snow Ice'
     ],
     description: 'Rich sixteen hour simmered broth, springy hand pulled noodles, tender chashu pork, crispy gyoza and draft Japanese beer'
   },
@@ -121,18 +183,12 @@ export const BRANDS: BrandData[] = [
     name: 'Viva Refresh',
     subtitle: 'Fresh Fruit Coolers & Cold Pressed Sips',
     cuisine: 'Real Fruit Coolers',
-    locationCount: 'Houston Flagship',
+    locationCount: '1 Location',
     states: ['Texas'],
     status: 'Open',
     image: 'assets/food/tropical_drink.jpg',
     foodImages: [
       'assets/food/tropical_drink.jpg'
-    ],
-    highlights: [
-      'Ripe fruit purees',
-      'Fresh squeezed citrus',
-      'Brewed loose leaf tea',
-      'Energizing hydration'
     ],
     description: 'Chilled ripe mango purees, freshly squeezed Meyer lemons, crushed passionfruit and slow brewed botanical iced teas'
   }

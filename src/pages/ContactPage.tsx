@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 
+const INQUIRY_TYPES = [
+  'Franchising Opportunities',
+  'Real Estate & Landlords',
+  'Private Events & Catering',
+  'Partnerships & Vendors',
+  'Media & Press',
+  'Guest Feedback',
+  'General Question'
+];
+
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [inquiryType, setInquiryType] = useState('');
 
   return (
-    <div className="space-y-16 md:space-y-20 pb-24">
-      {/* Header */}
-      <section className="pt-10 md:pt-16 max-w-7xl mx-auto px-6 md:px-10">
-        <div className="max-w-2xl space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#B45309]">
-            Connect
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917]">
-            Say Hello
-          </h1>
-          <p className="font-serif text-2xl sm:text-3xl text-[#44403C] italic">
-            General questions, private events, real estate partnerships
-          </p>
-        </div>
-      </section>
-
+    <div className="pt-10 md:pt-16 pb-24">
       {/* Main Grid */}
       <section className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           <div className="lg:col-span-5 p-8 rounded-3xl bg-[#1C1917] text-white space-y-6">
             <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block">
               Direct Contact
@@ -96,6 +92,29 @@ export const ContactPage: React.FC = () => {
                       className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase text-[#44403C] mb-1">
+                    Inquiry Type
+                  </label>
+                  <select
+                    required
+                    value={inquiryType}
+                    onChange={(e) => setInquiryType(e.target.value)}
+                    className={`w-full px-3.5 py-2.5 text-sm bg-[#FAF8F5] border border-[#E7E3DC] rounded-xl cursor-pointer ${
+                      inquiryType ? 'text-[#1C1917]' : 'text-[#A8A29E]'
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Select an inquiry type
+                    </option>
+                    {INQUIRY_TYPES.map((type) => (
+                      <option key={type} value={type} className="text-[#1C1917]">
+                        {type}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
