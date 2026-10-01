@@ -86,15 +86,15 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-[#2A251F] flex flex-wrap items-center gap-3">
+              <div className="pt-5 border-t border-[#2A251F] grid grid-cols-1 sm:grid-cols-2 gap-3 sm:[&>*:only-child]:col-span-2">
                 {onViewLocations && RESTAURANT_LOCATIONS.some((l) => l.brandId === brand.id) && (
                   <button
                     onClick={() => {
                       onViewLocations(brand.id);
                     }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#CBB48B] hover:bg-[#E2C99C] text-[#0A0908] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#CBB48B] hover:bg-[#E2C99C] text-[#0A0908] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
                   >
-                    <MapPin className="w-3.5 h-3.5 text-[#CBB48B]" />
+                    <MapPin className="w-4 h-4" />
                     View Locations
                   </button>
                 )}
@@ -102,9 +102,9 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
                 {brand.websiteUrl && (
                   <button
                     onClick={() => window.open(brand.websiteUrl, '_blank', 'noopener,noreferrer')}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#13110F] hover:bg-white/5 text-[#F3EBDD] border border-[#2A251F] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#13110F] hover:bg-white/5 text-[#F3EBDD] border border-[#2A251F] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
                   >
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-4 h-4" />
                     Official Website
                   </button>
                 )}

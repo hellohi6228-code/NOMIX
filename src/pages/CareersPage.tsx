@@ -51,7 +51,7 @@ export const CareersPage: React.FC = () => {
                     setSubmitted(false);
                     setResume(null);
                   }}
-                  className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl transition-colors cursor-pointer shrink-0"
+                  className="w-full md:w-auto px-5 py-3.5 md:py-2.5 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl transition-colors cursor-pointer shrink-0"
                 >
                   Apply Now
                 </button>

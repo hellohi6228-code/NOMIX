@@ -131,7 +131,7 @@ export const ContactPage: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl cursor-pointer"
+                  className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl cursor-pointer"
                 >
                   Send Message
                 </button>
