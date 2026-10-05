@@ -21,7 +21,7 @@ const STORY_HIGHLIGHTS_EN = [
 const STORY_HIGHLIGHTS_ZH = [
   {
     badge: '根基',
-    headline: '生于德州，长于德州',
+    headline: '生于中国，扎根德州，遍布全美',
     note: '从一家餐厅的构想出发，成长为遍布全美的六大餐饮品牌'
   },
   {
