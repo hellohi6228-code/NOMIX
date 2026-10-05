@@ -2,13 +2,13 @@
 
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
-    --font-display: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+    --font-display: 'Cinzel', 'Noto Serif SC', serif;
   }
   
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
     background-color: #0A0908;
     color: #F3EBDD;
     color-scheme: dark;
@@ -16,15 +16,15 @@
 }
 
 .font-display {
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', 'Noto Serif SC', serif;
 }
 
 .font-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
 }
 
 .font-sans {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans SC', system-ui, sans-serif;
 }
 
 /* Subtle hospitality warm grain / glow */
@@ -45,7 +45,7 @@
 
 /* Location map: dark basemap from OSM tiles, gold-trimmed popups */
 .nomix-dark-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.85) saturate(0.35) sepia(0.25); }
-.leaflet-container { background: #0A0908; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+.leaflet-container { background: #0A0908; font-family: 'Plus Jakarta Sans', 'Noto Sans SC', system-ui, sans-serif; }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #13110F; color: #F3EBDD; border: 1px solid rgba(203, 180, 139, 0.35); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
 .leaflet-container a.leaflet-popup-close-button { color: #8E8578; }
 .leaflet-bar a { background: #13110F; color: #CBB48B; border-bottom-color: #2A251F; }
@@ -76,3 +76,7 @@
 .nomix-marquee { animation: nomix-marquee linear infinite; }
 .nomix-marquee:hover { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .nomix-marquee { animation: none; } }
+
+/* Chinese: italics and wide letter-spacing read poorly in CJK, so soften them */
+html[lang='zh-CN'] .italic { font-style: normal; }
+html[lang='zh-CN'] [class*='tracking-'] { letter-spacing: 0.04em; }

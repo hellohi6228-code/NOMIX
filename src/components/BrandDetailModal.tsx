@@ -3,6 +3,7 @@ import { X, ExternalLink, MapPin } from 'lucide-react';
 import { BrandData } from '../types';
 import { BrandVisualArt } from './BrandVisualArt';
 import { RESTAURANT_LOCATIONS } from '../data/locations';
+import { stateName, useLang, useT } from '../i18n';
 
 interface BrandDetailModalProps {
   brand: BrandData | null;
@@ -15,6 +16,8 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
   onClose,
   onViewLocations
 }) => {
+  const t = useT();
+  const { lang } = useLang();
   if (!brand) return null;
 
   return (
@@ -34,7 +37,7 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 text-neutral-400 hover:text-white rounded-full hover:bg-white/5 transition-colors cursor-pointer"
-            aria-label="Close"
+            aria-label={t.modal.close}
           >
             <X className="w-5 h-5" />
           </button>
@@ -79,8 +82,8 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
 
                 <div className="pt-2 text-xs text-[#8E8578] space-y-1">
                   <div>
-                    <span className="font-semibold text-[#F3EBDD]">Locations: </span>
-                    <span>{brand.states.join(', ')}</span>
+                    <span className="font-semibold text-[#F3EBDD]">{t.modal.locations}</span>
+                    <span>{brand.states.map((s) => stateName(s, lang)).join(lang === 'zh' ? '、' : ', ')}</span>
                   </div>
                 </div>
               </div>
@@ -95,7 +98,7 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#CBB48B] hover:bg-[#E2C99C] text-[#0A0908] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
                   >
                     <MapPin className="w-4 h-4" />
-                    View Locations
+                    {t.modal.viewLocations}
                   </button>
                 )}
 
@@ -105,7 +108,7 @@ export const BrandDetailModal: React.FC<BrandDetailModalProps> = ({
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#13110F] hover:bg-white/5 text-[#F3EBDD] border border-[#2A251F] font-bold text-xs uppercase tracking-wider rounded-xl transition-colors cursor-pointer shadow-xs"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Official Website
+                    {t.modal.website}
                   </button>
                 )}
               </div>

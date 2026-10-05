@@ -3,6 +3,12 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { RestaurantLocation } from '../types';
 import { formatWeeklyHours, isOpenNow, timeZoneForState } from '../utils/hours';
+import type { Lang } from '../i18n';
+
+const POPUP_LABELS = {
+  en: { open: 'Open now', closed: 'Closed', directions: 'Get Directions', website: 'Website' },
+  zh: { open: '营业中', closed: '已打烊', directions: '导航前往', website: '门店官网' },
+};
 
 export const BRAND_PIN_COLORS: Record<string, string> = {
   umiya: '#F87171',
@@ -21,14 +27,15 @@ export const directionsUrl = (loc: RestaurantLocation) =>
 const escapeHtml = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
-function popupHtml(loc: RestaurantLocation) {
+function popupHtml(loc: RestaurantLocation, lang: Lang) {
+  const L10N = POPUP_LABELS[lang];
   const open = loc.hours ? isOpenNow(loc.hours, timeZoneForState(loc.state)) : null;
   const badge =
     open === null
       ? ''
-      : `<span class="nomix-pop-badge ${open ? 'is-open' : 'is-closed'}">${open ? 'Open now' : 'Closed'}</span>`;
+      : `<span class="nomix-pop-badge ${open ? 'is-open' : 'is-closed'}">${open ? L10N.open : L10N.closed}</span>`;
   const hours = loc.hours
-    ? `<table class="nomix-pop-hours">${formatWeeklyHours(loc.hours)
+    ? `<table class="nomix-pop-hours">${formatWeeklyHours(loc.hours, lang)
         .map((r) => `<tr><td>${r.days}</td><td>${r.hours}</td></tr>`)
         .join('')}</table>`
     : '';
@@ -40,8 +47,8 @@ function popupHtml(loc: RestaurantLocation) {
       ${loc.phone ? `<div class="nomix-pop-line"><a href="tel:${escapeHtml(loc.phone)}">${escapeHtml(loc.phone)}</a></div>` : ''}
       ${hours}
       <div class="nomix-pop-actions">
-        <a href="${directionsUrl(loc)}" target="_blank" rel="noopener noreferrer">Get Directions</a>
-        ${loc.website ? `<a href="${escapeHtml(loc.website)}" target="_blank" rel="noopener noreferrer">Website</a>` : ''}
+        <a href="${directionsUrl(loc)}" target="_blank" rel="noopener noreferrer">${L10N.directions}</a>
+        ${loc.website ? `<a href="${escapeHtml(loc.website)}" target="_blank" rel="noopener noreferrer">${L10N.website}</a>` : ''}
       </div>
     </div>`;
 }
@@ -50,9 +57,10 @@ interface LocationsMapProps {
   locations: RestaurantLocation[];
   // key changes on every click so re-selecting the same card re-opens its pin
   focus: { id: string; key: number } | null;
+  lang: Lang;
 }
 
-export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) => {
+export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus, lang }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const markersRef = useRef<Map<string, L.CircleMarker>>(new Map());
@@ -101,7 +109,7 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
         fillColor: BRAND_PIN_COLORS[loc.brandId],
         fillOpacity: 1,
       })
-        .bindPopup(() => popupHtml(loc), { maxWidth: 280 })
+        .bindPopup(() => popupHtml(loc, lang), { maxWidth: 280 })
         .bindTooltip(loc.name, { direction: 'top', offset: [0, -8] })
         .addTo(map);
       markersRef.current.set(loc.id, marker);
@@ -133,7 +141,7 @@ export const LocationsMap: React.FC<LocationsMapProps> = ({ locations, focus }) 
     userMovedRef.current = false;
     frameRef.current();
     return () => clearTimeout(retry);
-  }, [locations]);
+  }, [locations, lang]);
 
   useEffect(() => {
     if (!focus) return;

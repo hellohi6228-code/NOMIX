@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { CheckCircle2, MapPin, X, Upload } from 'lucide-react';
-import { CAREER_ROLES } from '../data/careers';
+import { CAREER_ROLES, localizeRole } from '../data/careers';
+import { useLang, useT } from '../i18n';
 import { JobOpening } from '../types';
 
 export const CareersPage: React.FC = () => {
-  const [activeJob, setActiveJob] = useState<JobOpening | null>(null);
+  const t = useT();
+  const { lang } = useLang();
+  const roles = CAREER_ROLES.map((r) => localizeRole(r, lang));
+  const [activeJobId, setActiveJobId] = useState<string | null>(null);
+  const activeJob: JobOpening | null = roles.find((r) => r.id === activeJobId) ?? null;
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,15 +23,15 @@ export const CareersPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#F3EBDD]">
-              Open Opportunities
+              {t.careers.title}
             </h2>
             <span className="text-xs font-bold uppercase tracking-wider text-[#8E8578]">
-              {CAREER_ROLES.length} Roles Available
+              {t.careers.count(roles.length)}
             </span>
           </div>
 
           <div className="space-y-3">
-            {CAREER_ROLES.map((job) => (
+            {roles.map((job) => (
               <div
                 key={job.id}
                 className="bg-[#13110F] p-6 rounded-2xl border border-[#2A251F] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md transition-shadow"
@@ -47,13 +52,13 @@ export const CareersPage: React.FC = () => {
 
                 <button
                   onClick={() => {
-                    setActiveJob(job);
+                    setActiveJobId(job.id);
                     setSubmitted(false);
                     setResume(null);
                   }}
                   className="w-full md:w-auto px-5 py-3.5 md:py-2.5 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-xl transition-colors cursor-pointer shrink-0"
                 >
-                  Apply Now
+                  {t.careers.apply}
                 </button>
               </div>
             ))}
@@ -66,7 +71,7 @@ export const CareersPage: React.FC = () => {
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-[#0A0908] rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-[#2A251F] relative">
             <button
-              onClick={() => setActiveJob(null)}
+              onClick={() => setActiveJobId(null)}
               className="absolute top-5 right-5 p-2 text-neutral-400 hover:text-white rounded-full cursor-pointer"
             >
               <X className="w-5 h-5" />
@@ -91,35 +96,35 @@ export const CareersPage: React.FC = () => {
                 <div className="space-y-3 pt-2">
                   <div>
                     <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
-                      Full Name
+                      {t.careers.fullName}
                     </label>
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name"
+                      placeholder={t.careers.namePlaceholder}
                       className="w-full px-3.5 py-2.5 text-sm bg-[#13110F] border border-[#2A251F] rounded-xl"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
-                      Email Address
+                      {t.careers.email}
                     </label>
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your email"
+                      placeholder={t.careers.emailPlaceholder}
                       className="w-full px-3.5 py-2.5 text-sm bg-[#13110F] border border-[#2A251F] rounded-xl"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
-                      Phone Number
+                      {t.careers.phone}
                     </label>
                     <input
                       type="tel"
@@ -133,12 +138,12 @@ export const CareersPage: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-bold uppercase text-[#D3C8B8] mb-1">
-                      Resume
+                      {t.careers.resume}
                     </label>
                     <label className="flex items-center gap-3 w-full px-3.5 py-3 text-sm bg-[#13110F] border border-dashed border-[#3A332B] rounded-xl cursor-pointer hover:border-[#CBB48B]">
                       <Upload className="w-4 h-4 text-[#CBB48B] shrink-0" />
                       <span className={resume ? 'text-[#F3EBDD] truncate' : 'text-[#8E8578]'}>
-                        {resume ? resume.name : 'Upload PDF or Word document'}
+                        {resume ? resume.name : t.careers.resumePlaceholder}
                       </span>
                       <input
                         type="file"
@@ -155,23 +160,23 @@ export const CareersPage: React.FC = () => {
                   type="submit"
                   className="w-full py-3 text-xs font-bold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] rounded-xl cursor-pointer"
                 >
-                  Send Application
+                  {t.careers.submit}
                 </button>
               </form>
             ) : (
               <div className="text-center py-6 space-y-3">
                 <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
                 <h3 className="font-display font-bold text-2xl text-[#F3EBDD]">
-                  Application Sent
+                  {t.careers.sentTitle}
                 </h3>
                 <p className="text-xs text-[#B5AB9C]">
-                  Thank you {name}, the {activeJob.brand} team will reach out to {email}
+                  {t.careers.sentBody(name, activeJob.brand, email)}
                 </p>
                 <button
-                  onClick={() => setActiveJob(null)}
+                  onClick={() => setActiveJobId(null)}
                   className="mt-4 px-5 py-2 text-xs font-bold uppercase text-[#0A0908] bg-[#CBB48B] rounded-xl"
                 >
-                  Close
+                  {t.careers.close}
                 </button>
               </div>
             )}

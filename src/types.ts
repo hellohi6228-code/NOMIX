@@ -15,6 +15,8 @@ export interface BrandData {
   highlights?: string[];
   websiteUrl?: string;
   description: string;
+  // Chinese copy for the 中文 site; anything missing falls back to English
+  zh?: Partial<Pick<BrandData, 'subtitle' | 'description' | 'highlights' | 'locationCount' | 'status'>>;
 }
 
 export interface RestaurantLocation {
@@ -41,4 +43,5 @@ export interface JobOpening {
   brand: string;
   type: string;
   vibe: string;
+  zh?: Partial<Pick<JobOpening, 'title' | 'department' | 'location' | 'type' | 'vibe'>>;
 }

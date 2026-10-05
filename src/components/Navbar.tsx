@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { useLang, useT } from '../i18n';
 
 interface NavbarProps {
   currentView: string;
@@ -9,12 +10,16 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const t = useT();
+  const { lang, setLang } = useLang();
+  const toggleLang = () => setLang(lang === 'zh' ? 'en' : 'zh');
+
   const navLinks = [
-    { id: 'brands', label: 'Our Brands' },
-    { id: 'story', label: 'Our Story' },
-    { id: 'locations', label: 'Locations' },
-    { id: 'careers', label: 'Careers' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'brands', label: t.nav.brands },
+    { id: 'story', label: t.nav.story },
+    { id: 'locations', label: t.nav.locations },
+    { id: 'careers', label: t.nav.careers },
+    { id: 'contact', label: t.nav.contact },
   ];
 
   const handleNav = (id: string) => {
@@ -62,10 +67,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
         {/* Zone 3: 1–2 primary actions */}
         <div className="flex items-center gap-3">
           <button
+            onClick={toggleLang}
+            aria-label={t.langToggleLabel}
+            className="px-3 py-2 text-xs font-semibold tracking-wider text-[#CBB48B] border border-[#CBB48B]/40 hover:border-[#CBB48B] hover:text-[#E2C99C] rounded-lg transition-colors cursor-pointer"
+          >
+            {t.langToggle}
+          </button>
+          <button
             onClick={() => handleNav('locations')}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] hover:bg-[#E2C99C] rounded-lg transition-colors shadow-sm whitespace-nowrap cursor-pointer"
           >
-            Find a Restaurant
+            {t.nav.findRestaurant}
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
 
@@ -73,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-[#F3EBDD] hover:text-[#E2C99C] rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
-            aria-label="Toggle navigation menu"
+            aria-label={t.nav.toggleMenu}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -102,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                 onClick={() => handleNav('locations')}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold uppercase tracking-wider text-[#0A0908] bg-[#CBB48B] rounded-lg transition-colors shadow-sm cursor-pointer"
               >
-                Find a Restaurant
+                {t.nav.findRestaurant}
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>

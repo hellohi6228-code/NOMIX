@@ -1,5 +1,6 @@
 import React from 'react';
 import { BRANDS } from '../data/brands';
+import { useT } from '../i18n';
 import { BrandId } from '../types';
 
 interface FooterProps {
@@ -7,10 +8,11 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const t = useT();
   return (
     <footer className="bg-[#070605] text-[#E7E5E4] border-t border-[#CBB48B]/15">
       <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#CBB48B]/15/80">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-[#CBB48B]/15">
           <div className="lg:col-span-6 space-y-3">
             <span className="font-display text-2xl font-bold tracking-[0.2em] text-white uppercase block">
               NOMIX
@@ -20,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="lg:col-span-6 grid grid-cols-2 gap-6 text-xs">
             <div>
               <span className="font-bold uppercase tracking-wider text-neutral-200 block mb-3">
-                Our Brands
+                {t.footer.brands}
               </span>
               <ul className="space-y-2 text-neutral-400">
                 {BRANDS.map((brand) => (
@@ -41,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
             <div>
               <span className="font-bold uppercase tracking-wider text-neutral-200 block mb-3">
-                Explore
+                {t.footer.explore}
               </span>
               <ul className="space-y-2 text-neutral-400">
                 <li>
@@ -52,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white cursor-pointer"
                   >
-                    Story
+                    {t.footer.story}
                   </button>
                 </li>
                 <li>
@@ -63,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white cursor-pointer"
                   >
-                    Locations
+                    {t.footer.locations}
                   </button>
                 </li>
                 <li>
@@ -74,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white cursor-pointer"
                   >
-                    Careers
+                    {t.footer.careers}
                   </button>
                 </li>
                 <li>
@@ -85,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white cursor-pointer"
                   >
-                    Contact
+                    {t.footer.contact}
                   </button>
                 </li>
               </ul>
@@ -95,13 +97,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-3">
-          <p>© {new Date().getFullYear()} NOMIX Hospitality Group</p>
+          <p>© {new Date().getFullYear()} {t.meta.group}</p>
           <div className="flex items-center gap-4">
-            <span>Texas Roots</span>
-            <span>/</span>
-            <span>Real Food</span>
-            <span>/</span>
-            <span>Warm Tables</span>
+            {t.footer.motto.map((word, i) => (
+              <React.Fragment key={word}>
+                {i > 0 && <span>/</span>}
+                <span>{word}</span>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

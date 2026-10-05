@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { BRANDS } from '../data/brands';
+import { BRANDS, localizeBrand } from '../data/brands';
+import { useLang, useT } from '../i18n';
 import { BrandVisualArt } from '../components/BrandVisualArt';
 import { BrandId } from '../types';
 
@@ -32,13 +33,9 @@ const HERO_SLIDES: CarouselSlide[] = (() => {
   return slides;
 })();
 
-const HERO_STATS = [
-  { value: '40+', label: 'Restaurants' },
-  { value: '10', label: 'States' },
-  { value: '6', label: 'Culinary Brands', accent: true }
-];
-
 export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
+  const t = useT();
+  const { lang } = useLang();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const goTo = useCallback((idx: number) => {
@@ -58,7 +55,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
   }, [currentSlide]);
 
   const slide = HERO_SLIDES[currentSlide];
-  const slideBrand = BRANDS.find((b) => b.id === slide.brandId)!;
+  const slideBrand = localizeBrand(BRANDS.find((b) => b.id === slide.brandId)!, lang);
 
   return (
     <div className="space-y-28 sm:space-y-40 lg:space-y-48 pb-36 overflow-hidden">
@@ -79,17 +76,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
               className="lg:col-span-6 flex flex-col justify-center gap-9 lg:gap-11 text-left"
             >
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gold-gradient leading-[0.98] pb-1">
-                From Texas
+                {t.home.titleLine1}
                 <br />
-                to the World
+                {t.home.titleLine2}
               </h1>
 
               <div className="grid grid-cols-3 border-y border-[#2A251F] divide-x divide-[#2A251F] max-w-xl">
-                {HERO_STATS.map((stat) => (
+                {t.home.stats.map((stat, i) => (
                   <div key={stat.label} className="py-5 sm:py-6 px-4 sm:px-6 first:pl-0">
                     <span
                       className={`block font-display text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tabular-nums tracking-tight leading-none ${
-                        stat.accent ? 'text-[#CBB48B]' : 'text-[#F3EBDD]'
+                        i === 2 ? 'text-[#CBB48B]' : 'text-[#F3EBDD]'
                       }`}
                     >
                       {stat.value}
@@ -102,7 +99,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
               </div>
 
               <p className="text-lg sm:text-xl lg:text-[1.375rem] text-[#D3C8B8] leading-[1.6] max-w-lg">
-                Fresh sliced sushi, steaming cajun crab boils, roaring hibachi flame, hand whisked ceremonial matcha, slow simmered ramen broths
+                {t.home.lead}
               </p>
             </motion.div>
 
@@ -133,14 +130,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
                 <button
                   onClick={() => goTo(currentSlide - 1)}
                   className="absolute left-3 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-black/45 hover:bg-black/70 text-white backdrop-blur-xs transition-colors cursor-pointer"
-                  aria-label="Previous photo"
+                  aria-label={t.home.prevPhoto}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => goTo(currentSlide + 1)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-black/45 hover:bg-black/70 text-white backdrop-blur-xs transition-colors cursor-pointer"
-                  aria-label="Next photo"
+                  aria-label={t.home.nextPhoto}
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -168,7 +165,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenBrand }) => {
         className="max-w-7xl mx-auto px-6 md:px-10"
       >
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#F3EBDD] mb-8">
-          Our Brands
+          {t.home.ourBrands}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">

@@ -32,24 +32,30 @@ const toMinutes = (hhmm: string) => {
   return h * 60 + m;
 };
 
-const formatTime = (hhmm: string) => {
+const DAY_LABELS_ZH = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+
+const formatTime = (hhmm: string, lang: 'en' | 'zh') => {
   const [h, m] = hhmm.split(':').map(Number);
+  if (lang === 'zh') return `${String(h % 24).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
   const suffix = h >= 12 && h < 24 ? 'PM' : 'AM';
   const h12 = h % 12 === 0 ? 12 : h % 12;
   return m ? `${h12}:${String(m).padStart(2, '0')} ${suffix}` : `${h12} ${suffix}`;
 };
 
 /** Groups consecutive days with identical hours, starting the week on Monday. */
-export function formatWeeklyHours(week: WeeklyHours): { days: string; hours: string }[] {
+export function formatWeeklyHours(week: WeeklyHours, lang: 'en' | 'zh' = 'en'): { days: string; hours: string }[] {
   const order = [1, 2, 3, 4, 5, 6, 0];
-  const label = (d: DayHours) => (d ? `${formatTime(d.open)} – ${formatTime(d.close)}` : 'Closed');
+  const dayLabels = lang === 'zh' ? DAY_LABELS_ZH : DAY_LABELS;
+  const label = (d: DayHours) =>
+    d ? `${formatTime(d.open, lang)} – ${formatTime(d.close, lang)}` : lang === 'zh' ? '休息' : 'Closed';
   const rows: { days: string; hours: string }[] = [];
   let start = 0;
   for (let i = 1; i <= order.length; i++) {
     if (i < order.length && label(week[order[i]]) === label(week[order[start]])) continue;
-    const first = DAY_LABELS[order[start]];
-    const last = DAY_LABELS[order[i - 1]];
-    rows.push({ days: first === last ? first : `${first}–${last}`, hours: label(week[order[start]]) });
+    const first = dayLabels[order[start]];
+    const last = dayLabels[order[i - 1]];
+    const range = lang === 'zh' ? `${first}至${last}` : `${first}–${last}`;
+    rows.push({ days: first === last ? first : range, hours: label(week[order[start]]) });
     start = i;
   }
   return rows;

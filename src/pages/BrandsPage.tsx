@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 import { BRANDS } from '../data/brands';
+import { useT } from '../i18n';
 import { BrandVisualArt } from '../components/BrandVisualArt';
 import { BrandId } from '../types';
 
@@ -11,16 +12,17 @@ interface BrandsPageProps {
 }
 
 export const BrandsPage: React.FC<BrandsPageProps> = ({ onOpenBrand, onViewLocations: _onViewLocations }) => {
+  const t = useT();
   return (
     <div className="space-y-16 md:space-y-24 pb-24">
       {/* Header */}
       <section className="pt-10 md:pt-16 max-w-7xl mx-auto px-6 md:px-10">
         <div className="max-w-3xl space-y-3">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F3EBDD]">
-            Our Brands
+            {t.brandsPage.title}
           </h1>
           <p className="font-serif text-2xl sm:text-3xl text-[#D3C8B8] italic">
-            Six distinct culinary concepts, real kitchens, real food
+            {t.brandsPage.subtitle}
           </p>
         </div>
       </section>

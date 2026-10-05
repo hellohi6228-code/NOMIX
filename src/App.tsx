@@ -13,10 +13,12 @@ import { LocationsPage } from './pages/LocationsPage';
 import { CareersPage } from './pages/CareersPage';
 import { ContactPage } from './pages/ContactPage';
 import { BrandDetailModal } from './components/BrandDetailModal';
-import { BRANDS } from './data/brands';
+import { BRANDS, localizeBrand } from './data/brands';
+import { useLang } from './i18n';
 import { BrandId } from './types';
 
 export default function App() {
+  const { lang } = useLang();
   const [currentView, setCurrentView] = useState<string>('home');
   const [selectedBrandModal, setSelectedBrandModal] = useState<BrandId | null>(null);
   const [locationsBrandFilter, setLocationsBrandFilter] = useState<string>('all');
@@ -41,7 +43,10 @@ export default function App() {
   };
 
   const currentBrandData = selectedBrandModal
-    ? BRANDS.find((b) => b.id === selectedBrandModal) || null
+    ? (() => {
+        const b = BRANDS.find((x) => x.id === selectedBrandModal);
+        return b ? localizeBrand(b, lang) : null;
+      })()
     : null;
 
   return (
