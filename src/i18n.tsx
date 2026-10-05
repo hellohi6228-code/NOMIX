@@ -103,12 +103,12 @@ const STRINGS = {
     },
   },
   zh: {
-    meta: { title: 'NOMIX 餐饮集团 | 从德州走向世界', group: 'NOMIX 餐饮集团' },
+    meta: { title: 'NOMIX 餐饮集团 | 从中国走向世界', group: 'NOMIX 餐饮集团' },
     langToggle: 'EN',
     langToggleLabel: 'Switch to English',
     nav: { brands: '旗下品牌', story: '品牌故事', locations: '门店分布', careers: '加入我们', contact: '联系我们', findRestaurant: '查找门店', toggleMenu: '打开导航菜单' },
     home: {
-      titleLine1: '从德州',
+      titleLine1: '从中国',
       titleLine2: '走向世界',
       stats: [
         { value: '40+', label: '家门店' },
